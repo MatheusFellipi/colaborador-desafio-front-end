@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 
-type MenuProps = {
+type IsHideAllProps = {
   hide: boolean;
 };
 
-export const Menu = styled.div`
+export const Menu = styled.div<IsHideAllProps>`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -14,16 +14,18 @@ export const Menu = styled.div`
   transition: 0.4s;
   cursor: pointer;
 
-  border: 2px solid ${(props) => props.theme.colors.gray[200]};
-  border-radius: 8px;
+  border: 2px solid
+    ${(props) =>
+      props.hide ? props.theme.colors.black : props.theme.colors.gray[200]};
 
+  border-radius: 8px;
   padding: 16px 22px;
   font-weight: 500;
   line-height: 24px;
   font-size: 16px;
 `;
 
-export const Dropdown = styled.div<MenuProps>`
+export const Dropdown = styled.div<IsHideAllProps>`
   position: absolute;
   padding: 32px 29px 0 0;
   display: ${(props) => (props.hide === false ? "none" : "block")};
@@ -65,11 +67,7 @@ export const Dropdown = styled.div<MenuProps>`
   }
 `;
 
-type OverlayProps = {
-  hide: boolean;
-};
-
-export const Overlay = styled.div<OverlayProps>`
+export const Overlay = styled.div<IsHideAllProps>`
   display: ${(props) => (props.hide === false ? "none" : "block")};
   background: transparent;
   position: fixed;

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Dropdown, Menu, Overlay } from "./styles";
 
 export function SelectCompo() {
@@ -13,7 +13,7 @@ export function SelectCompo() {
   return (
     <>
       <Overlay hide={hide} onClick={handleHide} />
-      <Menu onClick={handleHide}>
+      <Menu onClick={handleHide} hide={hide}>
         <p>Colaboradores</p>
         <Image src="/more-vertical.svg" alt="" width="20rem" height="20rem" />
       </Menu>
