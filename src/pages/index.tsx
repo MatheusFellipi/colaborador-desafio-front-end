@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
 
+import { Templete } from "../components/templente/templente";
+
 const Home: NextPage = () => {
   return (
-    <div>
-      <p>oi</p>
-    </div>
+    <Templete>
+      <div>oi</div>
+    </Templete>
   );
 };
 
