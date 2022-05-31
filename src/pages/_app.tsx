@@ -2,7 +2,7 @@ import type { AppProps } from "next/app";
 import { Global, ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <Global
