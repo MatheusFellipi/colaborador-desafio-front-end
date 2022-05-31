@@ -24,6 +24,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             "font-family": '"Poppins",sans-serif',
             "font-weight": "400",
           },
+          body: {
+            background: "#E5E5E5",
+          },
           ["disabled"]: {
             opacity: "0.6",
             cursor: "not-allowed",
