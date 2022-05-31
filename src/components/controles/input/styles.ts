@@ -26,9 +26,9 @@ export const Fieldset = styled.fieldset`
       box-sizing: border-box;
       display: block;
       width: 100%;
-      border: 3px solid #cad6d1;
+      border: 2px solid ${(props) => props.theme.colors.gray[200]};
+      border-radius: 8px;
       padding: calc(0.5rem * 1.5) 0.5rem;
-      color: currentColor;
       background: transparent;
       border-radius: 4px;
 
