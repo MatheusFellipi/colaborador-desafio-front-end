@@ -3,23 +3,31 @@ import Image from "next/image";
 
 const Avatars = styled.img`
   vertical-align: middle;
-  width: 40px;
-  height: 40px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   border: 2px solid #1dd195;
 `;
 
-const Div = styled.div`
-  width: 40px;
-  height: 40px;
-`;
-type AvatarProps = {
-  src: string;
+type DivProps = {
+  width: string;
+  height: string;
 };
 
-export function Avatar({ src }: AvatarProps) {
+const Div = styled.div<DivProps>`
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+`;
+
+type AvatarProps = {
+  src: string;
+  width: string;
+  height: string;
+};
+
+export function Avatar({ src, width, height }: AvatarProps) {
   return (
-    <Div>
+    <Div width={width} height={height}>
       <Avatars
         src={
           "https://i.pinimg.com/originals/73/1b/ad/731bad3bf26de0e5da55b051efa74972.jpg"
