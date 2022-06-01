@@ -15,7 +15,7 @@ export function InputComponents() {
         <input
           className="input__field"
           type="text"
-          placeholder=" "
+          placeholder="Pesquise por nome ou cpf "
           value="Pesquise por nome ou cpf"
         />
         <span className="input__label">Pesquisa por</span>
