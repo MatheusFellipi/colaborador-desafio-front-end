@@ -6,6 +6,14 @@ const Badge_Container = styled.span`
   height: 24px;
   background: #b5f1dd;
   border-radius: 80px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 116%;
+
+  color: #34423d;
 `;
 
 type BadgeProps = {
