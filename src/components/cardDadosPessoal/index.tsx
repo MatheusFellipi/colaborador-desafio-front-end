@@ -52,15 +52,23 @@ const Icon = styled.span`
   border-radius: 80px;
 `;
 
-export function CardDadosPessoal() {
+type CardDadosPessoalProps = {
+  titlo: string;
+  description: string;
+};
+
+export function CardDadosPessoal({
+  titlo,
+  description,
+}: CardDadosPessoalProps) {
   return (
     <Div>
       <Icon>
         <AiOutlineCreditCard />
       </Icon>
       <div>
-        <span>CPF</span>
-        <p>869 748 070 15</p>
+        <span>{titlo}</span>
+        <p>{description}</p>
       </div>
     </Div>
   );
