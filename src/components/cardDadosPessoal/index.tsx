@@ -7,13 +7,13 @@ const Div = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 16px;
-  width: 316px;
+  width: 100%;
   height: 70px;
   background: #f5faf8;
   border: 2px solid #cad6d1;
   border-radius: 8px;
   > div {
-    margin-left: 8px;
+    margin-left: 0.9rem;
     span {
       width: 23px;
       height: 14px;
