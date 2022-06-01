@@ -5,16 +5,25 @@ import { BsSearch } from "react-icons/bs";
 
 type InputType = {
   name: string;
+  label: string;
   values: string;
   type?: "text";
-  hadleOnChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  iconHide?: boolean;
+  hadleOnChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export function Input({ values, hadleOnChange, type, name }: InputType) {
+export function Input({
+  values,
+  hadleOnChange,
+  type,
+  name,
+  label,
+  iconHide,
+}: InputType) {
   return (
     <Fieldset>
       <label className="input">
-        <BsSearch className="icon" />
+        {iconHide ? "" : <BsSearch className="icon" />}
         <input
           className="input__field"
           type={type}
@@ -23,7 +32,7 @@ export function Input({ values, hadleOnChange, type, name }: InputType) {
           onChange={hadleOnChange}
           name={name}
         />
-        <span className="input__label">Pesquisa por</span>
+        <span className="input__label">{label}</span>
       </label>
     </Fieldset>
   );
