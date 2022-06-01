@@ -34,7 +34,7 @@ export function Accordion({
       <Accordion_header hide={hide} onClick={handleHide}>
         <h1>Nome completo</h1>
         <div className="accordion_avatar">
-          <Avatar src={image} />
+          <Avatar height="40px" width="40px" src={image} />
           <Text>{name}</Text>
           <RiArrowDropDownLine fontSize={"3rem"} className="arrow" />
         </div>
