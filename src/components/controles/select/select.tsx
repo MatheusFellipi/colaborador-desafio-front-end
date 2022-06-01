@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Dropdown, Menu, Overlay } from "./styles";
 
-export function SelectCompo() {
+export function Select() {
   const [hide, setHide] = useState(false);
 
   function handleHide() {
