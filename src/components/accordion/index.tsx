@@ -18,7 +18,7 @@ export function Accordion() {
   }
   return (
     <Accordion_container hide={hide}>
-      <Accordion_header onClick={handleHide}>
+      <Accordion_header hide={hide} onClick={handleHide}>
         <h1>Nome completo</h1>
         <div className="accordion_avatar">
           <Avatar />
@@ -56,7 +56,7 @@ export function Accordion() {
           </div>
         </Accordion_body>
         <Accordion_body>
-          <Button />
+          <Button icon={`<AiOutlineFileAdd className="icon" />`} text="Ações" />
         </Accordion_body>
       </Dropdown>
     </Accordion_container>

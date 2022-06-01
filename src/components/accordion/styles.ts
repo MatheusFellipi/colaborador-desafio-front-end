@@ -14,9 +14,11 @@ export const Accordion_container = styled.div<IsHideAllProps>`
   ${({ hide }) => (hide ? `` : "`height: 396px`")}
 `;
 
-export const Accordion_header = styled.div`
+export const Accordion_header = styled.div<IsHideAllProps>`
   width: 100%;
-
+  .arrow {
+    transform: ${({ hide }) => (hide ? `rotate(deg)` : `rotate(180deg)`)};
+  }
   h1 {
     width: 196px;
     height: 17px;
@@ -67,7 +69,7 @@ export const Accordion_body = styled.div`
       font-weight: 600;
       font-size: 12px;
       line-height: 140%;
-      /* color: ${({ theme }) => theme.colors["gray-green"][100]}; */
+      color: ${({ theme }) => theme.colors["gray-green"][100]};
     }
     span {
       width: 88px;
@@ -77,7 +79,7 @@ export const Accordion_body = styled.div`
       font-weight: 400;
       font-size: 12px;
       line-height: 140%;
-      /* color: ${({ theme }) => theme.colors["gray-green"][100]}; */
+      color: ${({ theme }) => theme.colors["gray-green"][100]};
     }
   }
 `;
