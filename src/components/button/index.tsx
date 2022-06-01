@@ -9,7 +9,7 @@ const Button_Container = styled.button`
   justify-content: center;
   align-items: center;
   padding: 14px 24px;
-  width: 287px;
+  width: 100%;
   height: 52px;
   border: 2px solid ${(props) => props.theme.colors.teal[100]};
   background: ${(props) => props.theme.colors.white};
