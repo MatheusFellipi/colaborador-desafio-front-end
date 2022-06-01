@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Header } from "./styles";
+import { Container, Header, Heading1, Page, Wrapup } from "./styles";
 
 type TempleteType = {
   children: ReactNode;
@@ -7,10 +7,14 @@ type TempleteType = {
 
 export function Templete({ children }: TempleteType) {
   return (
-    <div>
+    <Wrapup>
       <Header>oi</Header>
-      <aside>aside</aside>
-      {children}
-    </div>
+      <Heading1>Colaboradores</Heading1>
+      <Container>
+        <section className="main">
+          <Page>{children}</Page>
+        </section>
+      </Container>
+    </Wrapup>
   );
 }
