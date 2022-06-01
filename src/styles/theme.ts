@@ -3,9 +3,11 @@ export const theme = {
     background: "#E5E5E5",
     white: "#FFFFFF",
     black: "#000",
+
     gray: {
       "100": "#EAEFED",
       "200": "#CAD6D1",
+      "600": "#000",
     },
     teal: {
       "100": "#B5F1DD",
