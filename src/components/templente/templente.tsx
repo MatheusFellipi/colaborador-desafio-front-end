@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import { AiOutlineClose, AiOutlineMore } from "react-icons/ai";
 
 import {
+  ActiveLi,
   Container,
   Dropdown,
   Fieldset,
@@ -54,19 +55,20 @@ export function Templete() {
           <Tabs_container>
             <nav>
               <ul>
-                <li
-                  className={activeTab === "colaboradores" ? "active" : ""}
+                <ActiveLi
+                  active={activeTab === "colaboradores" ? true : false}
                   onClick={handleTabColaboradores}
                 >
                   colaboradores
-                </li>
-                <li
+                </ActiveLi>
+                <ActiveLi
+                  active={activeTab === "cargo" ? true : false}
                   value={"cargo"}
                   className={activeTab === "cargo" ? "active" : ""}
                   onClick={handleTabCargo}
                 >
                   cargo
-                </li>
+                </ActiveLi>
               </ul>
             </nav>
           </Tabs_container>

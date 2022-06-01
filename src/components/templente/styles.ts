@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { type } from "os";
 
 type IsHideAllProps = {
   hide: boolean;
@@ -12,6 +13,7 @@ export const Tabs_container = styled.div`
   padding: 0px;
   height: 30px;
   border-bottom: 2px solid #eaefed;
+  margin-bottom: 40px;
 
   @media (max-width: 520px) {
     display: none;
@@ -24,14 +26,6 @@ export const Tabs_container = styled.div`
     font-size: 14px;
     line-height: 100%;
     color: #34423d;
-    /* 
-    ::before {
-      content: "    ";
-      position: absolute;
-      width: 196px;
-      height: 1px;
-      background: red;
-    } */
   }
 
   nav {
@@ -48,14 +42,19 @@ export const Tabs_container = styled.div`
       text-align: center;
       border: 0;
       color: #a3b8b0;
-
-      li {
-        width: 196px;
-        height: 30px;
-        list-style: none;
-      }
     }
   }
+`;
+
+type ActiveLiprops = {
+  active: boolean;
+};
+
+export const ActiveLi = styled.li<ActiveLiprops>`
+  width: 196px;
+  height: 30px;
+  list-style: none;
+  border-bottom: ${(props) => (props.active ? "2px solid #22E0A1 " : "")};
 `;
 
 export const Header = styled.header`
