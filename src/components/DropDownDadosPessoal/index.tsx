@@ -1,13 +1,21 @@
-import { ReactNode } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import styled from "@emotion/styled";
 
-export function DropDownDadosPessoal() {
+type DropDownDadosPessoalProps = {
+  description: string;
+  title: string;
+  opiton?: any[];
+};
+
+export function DropDownDadosPessoal({
+  description,
+  title,
+}: DropDownDadosPessoalProps) {
   return (
     <>
       <Fieldset>
-        <label className="__label">Departamento</label>
-        <p>Comercial</p>
+        <label className="__label">{title}</label>
+        <p>{description}</p>
         <RiArrowDropDownLine className="icon" />
       </Fieldset>
     </>
@@ -23,6 +31,7 @@ export const Fieldset = styled.fieldset`
   background: #f5faf8;
   border: 2px solid #cad6d1;
   border-radius: 8px;
+  width: 100%;
 
   .icon {
     position: absolute;
