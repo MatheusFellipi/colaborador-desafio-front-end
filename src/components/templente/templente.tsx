@@ -20,7 +20,7 @@ type TempleteType = {
   children: ReactNode;
 };
 
-export function Templete({ children }: TempleteType) {
+export function Templete() {
   const [activeTab, setActiveTab] = useState("colaboradores");
 
   const handleTabColaboradores = () => {
