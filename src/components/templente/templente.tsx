@@ -53,18 +53,21 @@ export function Templete() {
 
           <Tabs_container>
             <nav>
-              <input
-                readOnly
-                value={"colaboradores"}
-                className={activeTab === "colaboradores" ? "active" : ""}
-                onClick={handleTabColaboradores}
-              ></input>
-              <input
-                readOnly
-                value={"cargo"}
-                className={activeTab === "cargo" ? "active" : ""}
-                onClick={handleTabCargo}
-              ></input>
+              <ul>
+                <li
+                  className={activeTab === "colaboradores" ? "active" : ""}
+                  onClick={handleTabColaboradores}
+                >
+                  colaboradores
+                </li>
+                <li
+                  value={"cargo"}
+                  className={activeTab === "cargo" ? "active" : ""}
+                  onClick={handleTabCargo}
+                >
+                  cargo
+                </li>
+              </ul>
             </nav>
           </Tabs_container>
           <Page>{activeTab === "colaboradores" ? <PgLand /> : ""}</Page>

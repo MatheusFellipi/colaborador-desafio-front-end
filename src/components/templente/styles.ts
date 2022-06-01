@@ -11,30 +11,33 @@ export const Tabs_container = styled.div`
   width: 100%;
   padding: 0px;
   height: 30px;
-  /* border-bottom: 1px solid; */
+  border-bottom: 2px solid #eaefed;
 
   @media (max-width: 520px) {
     display: none;
   }
 
   .active {
-    width: 107px;
-    height: 14px;
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 100%;
     color: #34423d;
+    /* 
+    ::before {
+      content: "    ";
+      position: absolute;
+      width: 196px;
+      height: 1px;
+      background: red;
+    } */
   }
 
   nav {
     display: flex;
     width: 100%;
-    input {
-      width: 107px;
-      height: 14px;
-      margin-left: 0.5rem;
+    ul {
       font-family: "Poppins";
       font-style: normal;
       font-weight: 600;
@@ -45,17 +48,11 @@ export const Tabs_container = styled.div`
       text-align: center;
       border: 0;
       color: #a3b8b0;
-      :focus {
-        box-shadow: 0 0 0 0;
-        border: 0 none;
-        outline: 0;
-      }
 
-      &.active::after {
-        content: " ";
-        width: 50rem;
-        height: 50rem;
-        background: red;
+      li {
+        width: 196px;
+        height: 30px;
+        list-style: none;
       }
     }
   }
