@@ -13,8 +13,11 @@ const Div = styled.div`
   width: 40px;
   height: 40px;
 `;
+type AvatarProps = {
+  src: string;
+};
 
-export function Avatar() {
+export function Avatar({ src }: AvatarProps) {
   return (
     <Div>
       <Avatars
