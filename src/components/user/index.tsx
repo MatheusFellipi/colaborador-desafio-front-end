@@ -31,6 +31,9 @@ const Text = styled.p`
   display: flex;
   align-items: center;
   color: #34423d;
+  @media (max-width: 520px) {
+    display: none;
+  }
 `;
 
 const Descripiton = styled.p`
@@ -44,6 +47,9 @@ const Descripiton = styled.p`
   display: flex;
   align-items: center;
   color: #587169;
+  @media (max-width: 520px) {
+    display: none;
+  }
 `;
 
 const Accordion_header = styled.div`
