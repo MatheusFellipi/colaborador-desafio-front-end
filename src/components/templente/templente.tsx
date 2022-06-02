@@ -7,7 +7,6 @@ import {
   Container,
   Dropdown,
   Fieldset,
-  Header,
   Heading1,
   Menu,
   Overlay,
@@ -20,6 +19,7 @@ import {
 import { PgLand } from "../pa";
 import { Users } from "../user";
 import Image from "next/image";
+import { Header } from "../header";
 
 type TempleteType = {
   children: ReactNode;
@@ -44,6 +44,7 @@ export function Templete() {
 
   return (
     <Wrapup>
+      <Header />
       <Tela>
         <Aside></Aside>
         <Container>
