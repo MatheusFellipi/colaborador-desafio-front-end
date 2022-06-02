@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { type } from "os";
 import { ReactNode } from "react";
 import { AiOutlineFileAdd } from "react-icons/ai";
 
@@ -16,8 +15,6 @@ const Button_Container = styled.button`
   border-radius: 8px;
 
   p {
-    width: 50px;
-    height: 24px;
     font-family: "Poppins";
     font-style: normal;
     font-weight: 600;
@@ -40,10 +37,10 @@ type ButtonProps = {
   icon?: ReactNode;
 };
 
-export function Button({ text }: ButtonProps) {
+export function Button({ text, icon }: ButtonProps) {
   return (
     <Button_Container>
-      <AiOutlineFileAdd className="icon" /> <p>{text}</p>
+      {icon} <p>{text}</p>
     </Button_Container>
   );
 }
