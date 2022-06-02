@@ -17,8 +17,6 @@ import {
 } from "./styles";
 
 import { PgLand } from "../pa";
-import { Users } from "../user";
-import Image from "next/image";
 import { Header } from "../header";
 
 type TempleteType = {
