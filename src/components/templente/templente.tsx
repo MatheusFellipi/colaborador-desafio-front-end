@@ -3,6 +3,7 @@ import { AiOutlineClose, AiOutlineMore } from "react-icons/ai";
 
 import {
   ActiveLi,
+  Aside,
   Container,
   Dropdown,
   Fieldset,
@@ -12,10 +13,13 @@ import {
   Overlay,
   Page,
   Tabs_container,
+  Tela,
   Wrapup,
 } from "./styles";
 
 import { PgLand } from "../pa";
+import { Users } from "../user";
+import Image from "next/image";
 
 type TempleteType = {
   children: ReactNode;
@@ -40,41 +44,43 @@ export function Templete() {
 
   return (
     <Wrapup>
-      <Header>oi</Header>
-      <Heading1>Colaboradores</Heading1>
+      <Tela>
+        <Aside></Aside>
+        <Container>
+          <Heading1>Colaboradores</Heading1>
+          <section className="main">
+            <Fieldset>
+              <Menu onClick={handleHide} hide={hide}>
+                <p>{activeTab}</p>
+                <AiOutlineMore />
+              </Menu>
+            </Fieldset>
 
-      <Container>
-        <section className="main">
-          <Fieldset>
-            <Menu onClick={handleHide} hide={hide}>
-              <p>{activeTab}</p>
-              <AiOutlineMore />
-            </Menu>
-          </Fieldset>
+            <Tabs_container>
+              <nav>
+                <ul>
+                  <ActiveLi
+                    active={activeTab === "colaboradores" ? true : false}
+                    onClick={handleTabColaboradores}
+                  >
+                    colaboradores
+                  </ActiveLi>
+                  <ActiveLi
+                    active={activeTab === "cargo" ? true : false}
+                    value={"cargo"}
+                    className={activeTab === "cargo" ? "active" : ""}
+                    onClick={handleTabCargo}
+                  >
+                    cargo
+                  </ActiveLi>
+                </ul>
+              </nav>
+            </Tabs_container>
 
-          <Tabs_container>
-            <nav>
-              <ul>
-                <ActiveLi
-                  active={activeTab === "colaboradores" ? true : false}
-                  onClick={handleTabColaboradores}
-                >
-                  colaboradores
-                </ActiveLi>
-                <ActiveLi
-                  active={activeTab === "cargo" ? true : false}
-                  value={"cargo"}
-                  className={activeTab === "cargo" ? "active" : ""}
-                  onClick={handleTabCargo}
-                >
-                  cargo
-                </ActiveLi>
-              </ul>
-            </nav>
-          </Tabs_container>
-          <Page>{activeTab === "colaboradores" ? <PgLand /> : ""}</Page>
-        </section>
-      </Container>
+            <Page>{activeTab === "colaboradores" ? <PgLand /> : ""}</Page>
+          </section>
+        </Container>
+      </Tela>
 
       <Dropdown hide={hide}>
         <div>
