@@ -1,102 +1,37 @@
-import { ReactNode, useState } from "react";
-import { AiOutlineClose, AiOutlineMore } from "react-icons/ai";
-
-import {
-  ActiveLi,
-  Aside,
-  Container,
-  Dropdown,
-  Fieldset,
-  Heading1,
-  Menu,
-  Overlay,
-  Page,
-  Tabs_container,
-  Tela,
-  Wrapup,
-} from "./styles";
-
-import { PgLand } from "../pa";
+import { ReactNode } from "react";
+import { Aside, Back, Container, Heading1, Tela, Wrapup } from "./styles";
 import { Header } from "../header";
+import Link from "next/link";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 type TempleteType = {
   children: ReactNode;
+  title?: string;
+  backroute: boolean;
 };
 
-export function Templete() {
-  const [activeTab, setActiveTab] = useState("colaboradores");
-
-  const handleTabColaboradores = () => {
-    setActiveTab("colaboradores");
-  };
-
-  const handleTabCargo = () => {
-    setActiveTab("cargo");
-  };
-
-  const [hide, setHide] = useState(false);
-
-  function handleHide() {
-    setHide(!hide);
-  }
-
+export function Templete({ children, title, backroute }: TempleteType) {
   return (
     <Wrapup>
       <Header />
       <Tela>
         <Aside></Aside>
         <Container>
-          <Heading1>Colaboradores</Heading1>
-          <section className="main">
-            <Fieldset>
-              <Menu onClick={handleHide} hide={hide}>
-                <p>{activeTab}</p>
-                <AiOutlineMore />
-              </Menu>
-            </Fieldset>
-
-            <Tabs_container>
-              <nav>
-                <ul>
-                  <ActiveLi
-                    active={activeTab === "colaboradores" ? true : false}
-                    onClick={handleTabColaboradores}
-                  >
-                    colaboradores
-                  </ActiveLi>
-                  <ActiveLi
-                    active={activeTab === "cargo" ? true : false}
-                    value={"cargo"}
-                    className={activeTab === "cargo" ? "active" : ""}
-                    onClick={handleTabCargo}
-                  >
-                    cargo
-                  </ActiveLi>
-                </ul>
-              </nav>
-            </Tabs_container>
-
-            <Page>{activeTab === "colaboradores" ? <PgLand /> : ""}</Page>
-          </section>
+          <Heading1>
+            {backroute ? (
+              <Back>
+                <Link href={"/"}>
+                  <AiOutlineArrowLeft />
+                </Link>
+              </Back>
+            ) : (
+              ""
+            )}
+            {title}
+          </Heading1>
+          <section className="main">{children}</section>
         </Container>
       </Tela>
-
-      <Dropdown hide={hide}>
-        <div>
-          <h1 className="title">Categorias </h1>
-          <AiOutlineClose />
-        </div>
-
-        <ul>
-          <li value={"colaboradores"} onClick={handleTabColaboradores}>
-            colaboradores
-          </li>
-          <li value={"cargo"} onClick={handleTabCargo}>
-            cargo
-          </li>
-        </ul>
-      </Dropdown>
-      <Overlay hide={hide} onClick={handleHide} />
     </Wrapup>
   );
 }
