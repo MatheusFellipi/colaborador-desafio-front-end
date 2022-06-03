@@ -10,6 +10,7 @@ type InputType = {
   type?: "text";
   iconHide?: boolean;
   hadleOnChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
 };
 
 export function Input({
@@ -19,6 +20,7 @@ export function Input({
   name,
   label,
   iconHide,
+  placeholder,
 }: InputType) {
   return (
     <Fieldset>
@@ -27,7 +29,7 @@ export function Input({
         <input
           className="input__field"
           type={type}
-          placeholder="Pesquise por nome ou cpf "
+          placeholder={placeholder}
           value={values}
           onChange={hadleOnChange}
           name={name}
