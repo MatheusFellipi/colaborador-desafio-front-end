@@ -2,7 +2,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import styled from "@emotion/styled";
 
 type DropDownDadosPessoalProps = {
-  description: string;
+  description: string | undefined;
   title: string;
   opiton?: any[];
 };
@@ -42,12 +42,6 @@ export const Fieldset = styled.fieldset`
     font-size: 3rem;
   }
   p {
-    width: 85px;
-    height: 24px;
-
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
     font-size: 16px;
     line-height: 150%;
     color: #587169;
@@ -58,7 +52,6 @@ export const Fieldset = styled.fieldset`
     top: -14px;
     left: 4px;
 
-    width: 105px;
     height: 1px;
 
     font-family: "Poppins";

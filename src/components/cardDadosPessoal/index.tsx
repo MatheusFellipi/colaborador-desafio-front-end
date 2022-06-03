@@ -27,7 +27,6 @@ const Div = styled.div`
       color: #587169;
     }
     p {
-      width: 103px;
       height: 14px;
       font-family: "Poppins";
       font-style: normal;
@@ -53,8 +52,8 @@ const Icon = styled.span`
 `;
 
 type CardDadosPessoalProps = {
-  titlo: string;
-  description: string;
+  titlo: string | undefined;
+  description: string | undefined;
 };
 
 export function CardDadosPessoal({
