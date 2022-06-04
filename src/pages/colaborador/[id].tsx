@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import {
+  AiOutlineCreditCard,
+  AiOutlinePhone,
+  AiOutlineCalendar,
+} from "react-icons/ai";
 import { useQuery } from "react-query";
 import { Avatar } from "../../components/avatar";
 import { CardDadosPessoal } from "../../components/cardDadosPessoal";
@@ -34,14 +38,19 @@ const Colaborador: NextPage = () => {
   const route = useRouter();
 
   const { data } = useQuery<agent>("agentdata", async () => {
+    const id = route.query.id;
     const res = await api.get("agent/1");
-    console.log(res.data);
     return res.data.agent;
   });
 
-  useEffect(() => {
-    console.log(route);
-  });
+  const cpfMask = (value: string | undefined) => {
+    return value
+      ?.replace(/\D/g, "")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d{1,2})/, "$1-$2")
+      .replace(/(-\d{2})\d+?$/, "$1");
+  };
 
   return (
     <Templete backroute={true} title="Detalhes do colaborador">
@@ -61,17 +70,31 @@ const Colaborador: NextPage = () => {
             flexDirection="column"
           >
             <CardDadosPessoal
+              icon={<AiOutlineCreditCard />}
               titlo={data?.document.type}
-              description={data?.document.number}
+              description={cpfMask(data?.document.number)}
             />
             <CardDadosPessoal
+              icon={<AiOutlinePhone />}
               titlo="telefone"
               description={`+${data?.phone.ddi} ${data?.phone.ddd} ${data?.phone.number} `}
             />
-            <CardDadosPessoal
-              titlo="Nascimento"
-              description={data?.birth_date}
-            />
+            {data ? (
+              <CardDadosPessoal
+                icon={<AiOutlineCalendar />}
+                titlo="Nascimento"
+                description={new Date(data.birth_date).toLocaleDateString(
+                  "pt-br",
+                  {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                  }
+                )}
+              />
+            ) : (
+              ""
+            )}
           </Box>
         </Box>
 
@@ -89,17 +112,27 @@ const Colaborador: NextPage = () => {
           >
             <Box flexDirection="column" ml="8px">
               <DropDownDadosPessoal
+                background="#f5faf8"
                 description={data?.department}
                 title="Departamento"
               />
-              <DropDownDadosPessoal description={data?.role} title="Cargo" />
+              <DropDownDadosPessoal
+                background="#f5faf8"
+                description={data?.role}
+                title="Cargo"
+              />
             </Box>
             <Box flexDirection="column">
               <DropDownDadosPessoal
+                background="#f5faf8"
                 description={data?.branch}
                 title="Unidade"
               />
-              <DropDownDadosPessoal description={data?.status} title="Status" />
+              <DropDownDadosPessoal
+                background="#f5faf8"
+                description={data?.status}
+                title="Status"
+              />
             </Box>
           </Box>
         </Box>
