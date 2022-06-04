@@ -26,13 +26,15 @@ export function PgLand() {
   const [hide, setHide] = useState(true);
   const [id, setId] = useState<number>();
 
-  const { data } = useQuery<AgentType[]>("rolestdata", async () => {
+  const { data } = useQuery<AgentType[]>("agentstdata", async () => {
     const res = await api.get("agents/?count=10");
     return res.data.items;
   });
 
   function handleHide(id?: number) {
     setId(id);
+    console.log(id);
+
     setHide(!hide);
   }
 
@@ -43,6 +45,7 @@ export function PgLand() {
   return (
     <Div>
       <Input
+        readOnly={false}
         label="Pesquisar por"
         name="search"
         placeholder="Pesquise por nome ou cpf "
