@@ -5,6 +5,7 @@ interface TextContainerProps {
   marginLeft?: string;
   fontSize?: string;
   inactive?: boolean;
+  width?: string;
 }
 
 type TextProps = {
@@ -13,6 +14,7 @@ type TextProps = {
   marginLeft?: string;
   inactive?: boolean;
   fontSize?: string;
+  width?: string;
 };
 
 export function Text({
@@ -21,9 +23,11 @@ export function Text({
   marginLeft,
   fontSize,
   inactive,
+  width,
 }: TextProps) {
   return (
     <Text_Container
+      width={width}
       inactive={inactive}
       fontSize={fontSize}
       margin={margin}
@@ -35,7 +39,7 @@ export function Text({
 }
 
 const Text_Container = styled.p<TextContainerProps>`
-  max-width: 59.56112852664577%;
+  width: ${({ width }) => width};
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
