@@ -21,7 +21,7 @@ export function Cargo() {
   const [values, setValues] = useState("");
   const [hide, setHide] = useState(true);
 
-  const { data } = useQuery<RolesType[]>("questlistdata", async () => {
+  const { data } = useQuery<RolesType[]>("rolesdata", async () => {
     const res = await api.get("roles/?count=10");
     return format(res.data.roles);
   });
