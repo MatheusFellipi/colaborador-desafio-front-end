@@ -13,9 +13,8 @@ export const Back = styled.span`
 
   width: 36px;
   height: 36px;
-
   background: #eaefed;
-  border-radius: 80px;
+  border-radius: 8px;
 `;
 
 export const Aside = styled.aside`
