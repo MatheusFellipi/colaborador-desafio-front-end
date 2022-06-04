@@ -1,5 +1,27 @@
 import styled from "@emotion/styled";
-import { AiOutlineCreditCard } from "react-icons/ai";
+import { ReactNode } from "react";
+
+type CardDadosPessoalProps = {
+  titlo: string | undefined;
+  description: string | undefined;
+  icon?: ReactNode;
+};
+
+export function CardDadosPessoal({
+  titlo,
+  description,
+  icon,
+}: CardDadosPessoalProps) {
+  return (
+    <Div>
+      <Icon>{icon}</Icon>
+      <div>
+        <span>{titlo}</span>
+        <p>{description}</p>
+      </div>
+    </Div>
+  );
+}
 
 const Div = styled.div`
   box-sizing: border-box;
@@ -17,9 +39,6 @@ const Div = styled.div`
     span {
       width: 23px;
       height: 14px;
-      font-family: "Poppins";
-      font-style: normal;
-      font-weight: 400;
       font-size: 12px;
       line-height: 120%;
       display: flex;
@@ -27,10 +46,6 @@ const Div = styled.div`
       color: #587169;
     }
     p {
-      height: 14px;
-      font-family: "Poppins";
-      font-style: normal;
-      font-weight: 600;
       font-size: 14px;
       line-height: 100%;
       display: flex;
@@ -50,25 +65,3 @@ const Icon = styled.span`
   background: #cad6d1;
   border-radius: 80px;
 `;
-
-type CardDadosPessoalProps = {
-  titlo: string | undefined;
-  description: string | undefined;
-};
-
-export function CardDadosPessoal({
-  titlo,
-  description,
-}: CardDadosPessoalProps) {
-  return (
-    <Div>
-      <Icon>
-        <AiOutlineCreditCard />
-      </Icon>
-      <div>
-        <span>{titlo}</span>
-        <p>{description}</p>
-      </div>
-    </Div>
-  );
-}
