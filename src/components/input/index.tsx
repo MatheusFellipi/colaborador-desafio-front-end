@@ -4,13 +4,14 @@ import styled from "@emotion/styled";
 import { BsSearch } from "react-icons/bs";
 
 type InputType = {
-  name: string;
+  name: string | undefined;
   label: string;
-  values: string;
+  values: string | undefined;
   type?: "text";
   iconHide?: boolean;
   hadleOnChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  readOnly: boolean;
 };
 
 export function Input({
@@ -21,6 +22,7 @@ export function Input({
   label,
   iconHide,
   placeholder,
+  readOnly,
 }: InputType) {
   return (
     <Fieldset>
@@ -33,6 +35,7 @@ export function Input({
           value={values}
           onChange={hadleOnChange}
           name={name}
+          readOnly={readOnly}
         />
         <span className="input__label">{label}</span>
       </label>
