@@ -1,32 +1,61 @@
 import styled from "@emotion/styled";
 import type { NextPage } from "next";
+import { FormEvent, useState } from "react";
+import { useQuery } from "react-query";
+import { Checkbox } from "../../components/checkbox";
 import { DropDownDadosPessoal } from "../../components/dropDownDadosPessoal";
 import { Input } from "../../components/input";
 import { Templete } from "../../components/templente/templente";
+import { api } from "../../services/axios";
+
+type Roles = {
+  role: string;
+  permissions: string[];
+};
+
+type RolesProps = {
+  name: string;
+  department: string;
+  grouprules: Roles[];
+};
 
 const Cargo: NextPage = () => {
+  const { data } = useQuery<RolesProps>("roledata", async () => {
+    const res = await api.get("role/1");
+    console.log(res.data);
+    return res.data.role;
+  });
+
+  function handleChange(e: FormEvent<HTMLInputElement>) {}
+
   return (
-    <Templete backroute={true}>
+    <Templete title="Cargos e permissões" backroute={true}>
       <Div>
         <Box flexDirection={"column"}>
           <Heading>Dados do cargo</Heading>
           <Box
             breackpoint={{ lg: "1440px", md: "768px" }}
             flexDirection={"column"}
+            justifyContent={"center"}
+            alignItems={"center"}
           >
-            <DropDownDadosPessoal title="Departamento" description="SAC" />
+            <DropDownDadosPessoal
+              background={"#ffffff"}
+              title="Departamento"
+              description="SAC"
+            />
             <Input
               iconHide={true}
               label="Cargo"
-              name="Analista"
-              values="Analista"
+              readOnly={true}
+              name={data?.name}
+              values={data?.name}
             />
           </Box>
         </Box>
 
         <Box flexDirection={"column"}>
           <Heading>Listagem de cargos</Heading>
-
           <Table>
             <thead>
               <tr>
@@ -37,18 +66,47 @@ const Cargo: NextPage = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Permisao</td>
-                <td>/</td>
-                <td>/</td>
-                <td>/</td>
-              </tr>
-              <tr>
-                <td>Permisao</td>
-                <td>/</td>
-                <td>/</td>
-                <td>/</td>
-              </tr>
+              {data?.grouprules.map((item) => (
+                <tr key={item.role}>
+                  <td>{item.role}</td>
+                  <td>
+                    <Checkbox
+                      checked={
+                        item.permissions.find((x) => x === "read")
+                          ? true
+                          : false
+                      }
+                      handleChange={handleChange}
+                      value={"read"}
+                      name={"read"}
+                    />
+                  </td>
+                  <td>
+                    <Checkbox
+                      checked={
+                        item.permissions.find((x) => x === "write")
+                          ? true
+                          : false
+                      }
+                      value={"write"}
+                      handleChange={handleChange}
+                      name={"write"}
+                    />
+                  </td>
+                  <td>
+                    <Checkbox
+                      checked={
+                        item.permissions.find((x) => x === "delete")
+                          ? true
+                          : false
+                      }
+                      handleChange={handleChange}
+                      value={"delete"}
+                      name={"delete"}
+                    />
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </Box>
@@ -78,11 +136,15 @@ type BoxProps = {
   padding?: string;
   ml?: string;
   breackpoint?: { lg?: string; md?: string; sm?: string };
+  justifyContent?: string;
+  alignItems?: string;
 };
 
 const Box = styled.section<BoxProps>`
   display: flex;
   flex-direction: ${({ flexDirection }) => flexDirection};
+  justify-content: ${({ justifyContent }) => justifyContent};
+  align-items: ${({ alignItems }) => alignItems};
   flex-wrap: ${({ flexWrap }) => flexWrap};
   padding: ${({ padding }) => padding};
   width: 100%;
@@ -132,12 +194,7 @@ const Table = styled.table`
     }
     tr th {
       margin: 0 10px 0 10px;
-      width: 500px;
-      width: 46px;
-      height: 17px;
-    }
-    tr th:last-child {
-      width: 66px;
+      width: 96px;
       height: 17px;
     }
   }
@@ -158,26 +215,21 @@ const Table = styled.table`
       border-bottom: 1px solid #eaefed;
       padding: 25px 16px;
     }
-
-    tr td:first-child {
-      text-align: left;
-    }
     tr td {
-      width: 102px;
+      text-align: left;
+      width: 96px;
       height: 17px;
+    }
+    tr td:first-child {
+      width: 500px;
     }
   }
 `;
 
 const Heading = styled.h1`
-  width: 207px;
-  height: 27px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
+  width: 100%;
+
   line-height: 150%;
-  display: flex;
-  align-items: center;
+
   color: #34423d;
 `;
