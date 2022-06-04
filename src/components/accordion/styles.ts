@@ -80,7 +80,7 @@ export const Dropdown_Button = styled.div<IsHideAllProps>`
   padding: 32px 29px 0 0;
   background: ${(props) => props.theme.colors.white};
   width: 98%;
-  height: 241px;
+  height: 300px;
   box-shadow: 0px 8px 24px rgba(165, 171, 179, 0.4);
   border-radius: 12px 12px 0px 0px;
   z-index: 300;
@@ -95,21 +95,26 @@ export const Dropdown_Button = styled.div<IsHideAllProps>`
 
   ul {
     list-style-type: none;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 600;
     font-size: 18px;
-    padding: 25px 32px;
+    padding: 20px 32px;
     text-decoration: none;
     font-weight: 500;
     font-size: 16px;
-    line-height: 150%;
     color: ${(props) => props.theme.colors["gray-green"][100]};
-    li {
-      cursor: pointer;
+
+    .disability {
+      color: #cad6d1;
     }
-    li:last-child {
+    li {
+      div {
+        margin-right: 10px;
+      }
       margin-top: 34px;
+      cursor: pointer;
+      display: flex;
+      &:first-child {
+        margin-top: 0px;
+      }
     }
   }
 `;

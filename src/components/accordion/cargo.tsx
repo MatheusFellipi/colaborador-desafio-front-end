@@ -2,6 +2,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { Button } from "../button";
 import { useState } from "react";
 import {
+  AiFillEdit,
   AiOutlineDelete,
   AiOutlineEye,
   AiOutlineFileAdd,
@@ -17,6 +18,7 @@ import {
 } from "./styles";
 import { Text } from "../text";
 import Link from "next/link";
+import Image from "next/image";
 
 type RolesType = {
   id?: number;
@@ -77,11 +79,49 @@ export function Cargos({ id, name, departament, agents_quantity }: RolesType) {
         <ul>
           <Link href={"cargo/" + id}>
             <li>
-              <AiOutlineEye /> Ver cargo
+              <div>
+                <Image
+                  width={"20px"}
+                  height={"20px"}
+                  src="/icon/eye.svg"
+                  alt="edit"
+                />
+              </div>{" "}
+              Ver cargo
             </li>
           </Link>
-          <li>
-            <AiOutlineDelete /> Excluir
+          <li className="disability">
+            <div>
+              <Image
+                width={"20px"}
+                height={"20px"}
+                src="/icon/edit.svg"
+                alt="edit"
+              />
+            </div>
+            Editar
+          </li>
+          <li className="disability">
+            <div>
+              <Image
+                width={"20px"}
+                height={"20px"}
+                src="/icon/duplicate.svg"
+                alt="edit"
+              />
+            </div>
+            Duplicar
+          </li>
+          <li className="disability">
+            <div>
+              <Image
+                width={"20px"}
+                height={"20px"}
+                src="/icon/repeat.svg"
+                alt="edit"
+              />
+            </div>
+            Excluir
           </li>
         </ul>
       </Dropdown_Button>

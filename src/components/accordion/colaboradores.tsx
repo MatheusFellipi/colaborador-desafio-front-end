@@ -21,6 +21,7 @@ import { Button } from "../button";
 import { Overlay } from "../overlay";
 import { Avatar } from "../avatar";
 import Link from "next/link";
+import Image from "next/image";
 
 type AccordionProps = {
   agent_id?: number;
@@ -128,11 +129,27 @@ export function Colaboradores({
         <ul>
           <Link href={"colaborador/" + agent_id}>
             <li>
-              <AiOutlineEye /> Ver colaborador
+              <div>
+                <Image
+                  width={"20px"}
+                  height={"20px"}
+                  src="/icon/eye.svg"
+                  alt="edit"
+                />
+              </div>
+              Ver colaborador
             </li>
           </Link>
-          <li>
-            <AiOutlineDelete /> Excluir
+          <li className="disability">
+            <div>
+              <Image
+                width={"20px"}
+                height={"20px"}
+                src="/icon/trash-2.svg"
+                alt="edit"
+              />
+            </div>
+            Excluir
           </li>
         </ul>
       </Dropdown_Button>
