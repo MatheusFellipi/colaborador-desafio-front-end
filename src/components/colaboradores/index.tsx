@@ -10,6 +10,7 @@ import { api } from "../../services/axios";
 import { Text } from "../text";
 import Link from "next/link";
 import { Pagination } from "../pagination";
+import Image from "next/image";
 
 type AgentType = {
   agent_id: number;
@@ -33,8 +34,6 @@ export function PgLand() {
 
   function handleHide(id?: number) {
     setId(id);
-    console.log(id);
-
     setHide(!hide);
   }
 
@@ -130,9 +129,29 @@ export function PgLand() {
       <Dropdown_Button hide={hide}>
         <ul>
           <Link href={"colaborador/" + id}>
-            <li>Ver colaborador</li>
+            <li>
+              <div>
+                <Image
+                  width={"20px"}
+                  height={"20px"}
+                  src="/icon/eye.svg"
+                  alt="edit"
+                />
+              </div>
+              Ver colaborador
+            </li>
           </Link>
-          <li>Excluir</li>
+          <li className="disability">
+            <div>
+              <Image
+                width={"20px"}
+                height={"20px"}
+                src="/icon/trash-2.svg"
+                alt="edit"
+              />
+            </div>
+            Excluir
+          </li>
         </ul>
       </Dropdown_Button>
     </Div>
@@ -154,21 +173,23 @@ const Dropdown_Button = styled.div<IsHideAllProps>`
   text-align: left;
   ul {
     list-style-type: none;
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 600;
     font-size: 18px;
     padding: 25px 32px;
-    text-decoration: none;
-    font-weight: 500;
     font-size: 16px;
-    line-height: 150%;
     color: ${(props) => props.theme.colors["gray-green"][100]};
     li {
-      cursor: pointer;
-    }
-    li:last-child {
       margin-top: 34px;
+      cursor: pointer;
+      display: flex;
+      div {
+        margin-right: 10px;
+      }
+      &:first-child {
+        margin-top: 0px;
+      }
+    }
+    .disability {
+      color: #cad6d1;
     }
   }
 `;
