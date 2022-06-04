@@ -5,15 +5,17 @@ type DropDownDadosPessoalProps = {
   description: string | undefined;
   title: string;
   opiton?: any[];
+  background?: string;
 };
 
 export function DropDownDadosPessoal({
   description,
   title,
+  background,
 }: DropDownDadosPessoalProps) {
   return (
     <>
-      <Fieldset>
+      <Fieldset background={background}>
         <label className="__label">{title}</label>
         <p>{description}</p>
         <RiArrowDropDownLine className="icon" />
@@ -21,17 +23,22 @@ export function DropDownDadosPessoal({
     </>
   );
 }
-export const Fieldset = styled.fieldset`
+
+type FieldsetProps = {
+  background?: string;
+};
+export const Fieldset = styled.fieldset<FieldsetProps>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 16px;
   position: relative;
-  background: #f5faf8;
+  background: ${({ background }) => background};
   border: 2px solid #cad6d1;
   border-radius: 8px;
   width: 100%;
+  height: 56px;
 
   .icon {
     position: absolute;
@@ -41,11 +48,6 @@ export const Fieldset = styled.fieldset`
     margin: calc(0.5rem * 0.75 + 3px) calc(0.5rem * 0.5);
     font-size: 3rem;
   }
-  p {
-    font-size: 16px;
-    line-height: 150%;
-    color: #587169;
-  }
 
   .__label {
     position: absolute;
@@ -53,14 +55,8 @@ export const Fieldset = styled.fieldset`
     left: 4px;
 
     height: 1px;
-
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: 500;
     font-size: 14px;
     line-height: 1px;
-    display: flex;
-    align-items: center;
 
     color: #a3b8b0;
     background: #fff;
@@ -71,7 +67,5 @@ export const Fieldset = styled.fieldset`
     transform: translate(0, 0);
     transform-origin: 0 0;
     transition: transform 120ms ease-in;
-    font-weight: bold;
-    line-height: 1.2;
   }
 `;
